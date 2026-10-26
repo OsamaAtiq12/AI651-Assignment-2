@@ -115,7 +115,7 @@ def nonoverlap_video(k_list=(1, 2, 3), limit=1000):
             X, Y = windows(vids[n:n + 1], k)
             fr = torch.cat([X[0], Y[0, :2]])[:, 0].cpu().numpy()
             for im in fr:
-                num, _ = cv2.connectedComponents((im > 0.3).astype(np.uint8))
+                num, _ = cv2.connectedComponents(cv2.dilate((im > 0.3).astype(np.uint8), np.ones((7, 7), np.uint8)))
                 if num - 1 != 2: ok = False; break
             if not ok: break
         if ok: return n

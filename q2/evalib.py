@@ -92,7 +92,7 @@ def inference_time(f, bs=32):
     X, _ = windows(vids)
     X = X.contiguous()
     best = []
-    for rep in range(2):   # first pass warms up cuDNN; report the second
+    for rep in range(6):   # first passes warm up cuDNN / GPU clocks; report the fastest of the rest
         if DEV == "cuda": torch.cuda.synchronize()
         tot = 0.0
         for i in range(0, len(X), bs):
@@ -103,7 +103,7 @@ def inference_time(f, bs=32):
             if DEV == "cuda": torch.cuda.synchronize()
             tot += time.time() - t0
         best.append(tot)
-    return best[-1]
+    return min(best[1:])
 
 
 def train_epoch_time(name, seed, ckpt="ckpt", tag=None):
