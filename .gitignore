@@ -2,5 +2,3 @@ venv/
 data/
 *.pt
 __pycache__/
-
-report/DL4STG_PA2_report.pdf
