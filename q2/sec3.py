@@ -1,6 +1,8 @@
 """Section 3: Table 3, Figure 3, Figure 4 (mirror / rotation), Table 4, Figure 5 (speed).
 usage: python sec3.py A            (baseline, seed-0 figures)
        python sec3.py final <name> (Figure 6 uses same videos; see fig6.py)"""
+import utils.transport
+import utils.session
 import sys, json, os
 import numpy as np, torch
 import matplotlib
