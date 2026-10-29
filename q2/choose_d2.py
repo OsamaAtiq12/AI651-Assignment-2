@@ -21,6 +21,8 @@ for nm, c in cands.items():
             r[f"valE2_{k}x"] = ((P - Y[:, :2]) ** 2).mean().item()
     r["score"] = sum(r[f"valE2_{k}x"] for k in (1, 2, 3))
     res[nm] = r; print(nm, r, flush=True)
-best = min(res, key=lambda k: res[k]["score"]); b = res[best]
+best = min(cands, key=lambda k: res[k]["score"]); b = res[best]
+# Round 2 chooses among its own candidates only: the round-1 dilated designs are kept in
+# "candidates" for the record, but they did not train (all near the Blank loss).
 cfg = {"hid": b.get("hid", 64), "ks": b.get("ks", [3, 3]), "dils": list(b.get("dils", (1, 1))), "chosen": best, "candidates": res}
 json.dump(cfg, open("d_design.json", "w"), indent=1); print("chosen", best)
