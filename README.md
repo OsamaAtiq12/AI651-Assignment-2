@@ -1,8 +1,8 @@
 # AI651 Assignment 2 — Osama Atiq (25280091)
 
-Public code for the PDF report in `report/DL4STG_PA2_report.pdf`.
+Public code for the AI651 Assignment 2 report, which is submitted as a PDF through the LMS.
 
-Question 1 is a design, not a training run. Question 2 is Moving MNIST. The numbers in the PDF are the files in `q2/` listed below. Executed notebooks that display the same results are `notebooks/Question1.ipynb` and `notebooks/Question2.ipynb`.
+Question 1 is a design, not a training run. Question 2 is Moving MNIST. The numbers in the PDF are the files in `q2/` listed below.
 
 ## Setup
 
@@ -47,10 +47,8 @@ python sec5.py
 
 - A fresh clone was made and the two `choose_d*.py` scripts were run on the Moving MNIST data with the epochs cut to 1 per candidate (a full 15-epoch run takes about an hour per candidate). Round 1 wrote only `d_design_round1.json`, and round 2 wrote `d_design.json` with a round-2 design. `models.build("D")` then built the reported architecture (572,560 parameters, 12 px reach) from the committed `d_design.json`.
 - The one-epoch scores in that check are all near the Blank loss and the two dense candidates are within 0.1 % of each other, so which one wins there is noise. The committed `d_design.json` is from the full 15-epoch search, where `k35_h48` scored 0.0944 against 0.0977 for `k55_h40`. A rerun needs the full epochs to pick the reported design.
-- `notebooks/Question2.ipynb` loads `notebooks/figures/*.json` for the tables. Only the Table 1 cell computes its numbers directly, from the transformation functions.
-- `report/measure_figures.py` reproduces every figure claim in the report that is stated as a measurement: the digit counts per frame, the centroid drift and peak intensity of the predictions, the row-3 versus row-4 difference, and one-epoch timings for D and D+B. It needs the trained weights in `q2/ckpt/`, which are not in the repository, so it is the one step here that a fresh clone cannot run without the weights.
 
-## Where the numbers live
+## Where the numbers and figures live
 
 | PDF item | File |
 |---|---|
@@ -64,5 +62,7 @@ python sec5.py
 | Same training record as JSON, including GPU name | `q2/ckpt/A_s0.json` and the matching files for every model and seed |
 | Model D design search | `q2/d_design.json`, `q2/choose_d.log`, `q2/choose_d2.log` |
 | Figure 3 and Figure 6a GIFs | `q2/gifs_A/`, `q2/gifs_final/` |
+
+The figure images used in the report are not in this repository; they are in the PDF. The numbered JSON files above are the values plotted in them.
 
 Weight files (`*.pt`) are not in the repository. `train.py` writes them next to the JSON logs, and `.gitignore` excludes them because of size. The logs and the table JSON files are the record behind every reported number.
