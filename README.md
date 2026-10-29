@@ -48,6 +48,7 @@ python sec5.py
 - A fresh clone was made and the two `choose_d*.py` scripts were run on the Moving MNIST data with the epochs cut to 1 per candidate (a full 15-epoch run takes about an hour per candidate). Round 1 wrote only `d_design_round1.json`, and round 2 wrote `d_design.json` with a round-2 design. `models.build("D")` then built the reported architecture (572,560 parameters, 12 px reach) from the committed `d_design.json`.
 - The one-epoch scores in that check are all near the Blank loss and the two dense candidates are within 0.1 % of each other, so which one wins there is noise. The committed `d_design.json` is from the full 15-epoch search, where `k35_h48` scored 0.0944 against 0.0977 for `k55_h40`. A rerun needs the full epochs to pick the reported design.
 - `notebooks/Question2.ipynb` loads `notebooks/figures/*.json` for the tables. Only the Table 1 cell computes its numbers directly, from the transformation functions.
+- `report/measure_figures.py` reproduces every figure claim in the report that is stated as a measurement: the digit counts per frame, the centroid drift and peak intensity of the predictions, the row-3 versus row-4 difference, and one-epoch timings for D and D+B. It needs the trained weights in `q2/ckpt/`, which are not in the repository, so it is the one step here that a fresh clone cannot run without the weights.
 
 ## Where the numbers live
 
