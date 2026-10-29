@@ -12,7 +12,7 @@ From this folder:
 pip install -r requirements.txt
 ```
 
-Moving MNIST is downloaded by torchvision. Set `DATA_ROOT` at the top of `q2/common.py` to a writable directory before running anything.
+Moving MNIST is downloaded by torchvision into `q2/data`, or into the directory in the environment variable `MOVING_MNIST_ROOT`.
 
 A CUDA GPU was used for the submitted runs (NVIDIA GeForce RTX 5070). The same scripts run on CPU.
 
@@ -27,6 +27,7 @@ python train.py --model A --seed 1
 python table2_fig2.py
 python sec3.py
 python choose_d.py
+python choose_d2.py
 python train.py --model B --seed 0
 python train.py --model B --seed 1
 python train.py --model C --seed 0
@@ -39,6 +40,8 @@ python sec5.py
 ```
 
 `train.py` trains one model for 30 epochs (Adam, learning rate 1e-3, batch 32) and writes a log. Models: `A` baseline, `B` symmetry augmentation, `C` speed augmentation, `D` larger reach, `DB` model D plus symmetry augmentation. Seeds are 0 and 1.
+
+`choose_d.py` only searches dilated kernels and writes `d_design_round1.json`. It does not choose the model D in the tables. `choose_d2.py` reads that file, tries the dense kernels, and writes `d_design.json`. The submitted model D is `k35_h48` from that second file. Training D before `choose_d2.py` has finished loads a different design.
 
 ## Where the numbers live
 

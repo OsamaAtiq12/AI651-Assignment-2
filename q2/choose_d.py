@@ -23,5 +23,5 @@ for nm, d in cands.items():
     res[nm] = r; print(nm, r, flush=True)
 best = min(res, key=lambda k: res[k]["score"])
 d = res[best]["dils"]
-json.dump({"hid": 64, "ks": [3, 3], "dils": list(d), "chosen": best, "candidates": res}, open("d_design.json", "w"), indent=1)
-print("chosen", best)
+json.dump({"hid": 64, "ks": [3, 3], "dils": list(d), "chosen": best, "candidates": res}, open("d_design_round1.json", "w"), indent=1)
+print("chosen round 1", best, "(not the submitted model D; run choose_d2.py next)")

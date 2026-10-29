@@ -1,8 +1,10 @@
 """Shared utilities for Question 2 (Motion or Memory?)."""
+import os
 import numpy as np
 import torch
 
-DATA_ROOT = r"C:\Users\PC\Desktop\Artlist_ImageModel_Showdown\outputs\pa2_work\data"
+_HERE = os.path.dirname(os.path.abspath(__file__))
+DATA_ROOT = os.environ.get("MOVING_MNIST_ROOT", os.path.join(_HERE, "data"))
 
 
 def load_moving_mnist():
