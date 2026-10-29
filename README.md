@@ -2,7 +2,7 @@
 
 Public code for the AI651 Assignment 2 report, which is submitted as a PDF through the LMS.
 
-Question 1 is a design, not a training run. Question 2 is Moving MNIST. The numbers in the PDF are the files in `q2/` listed below.
+Question 1 is a design, not a training run. Question 2 is Moving MNIST. The numbers in the PDF are the files in `q2/` listed below. Executed notebooks that display the same results are `notebooks/Question1.ipynb` and `notebooks/Question2.ipynb`.
 
 ## Setup
 
@@ -63,6 +63,6 @@ python sec5.py
 | Model D design search | `q2/d_design.json`, `q2/choose_d.log`, `q2/choose_d2.log` |
 | Figure 3 and Figure 6a GIFs | `q2/gifs_A/`, `q2/gifs_final/` |
 
-The figure images used in the report are not in this repository; they are in the PDF. The numbered JSON files above are the values plotted in them.
+The figure images used in the report are in `notebooks/figures/`; they are also the images the notebooks display. The numbered JSON files above are the values plotted in them.
 
 Weight files (`*.pt`) are not in the repository. `train.py` writes them next to the JSON logs, and `.gitignore` excludes them because of size. The logs and the table JSON files are the record behind every reported number.
